@@ -2,7 +2,8 @@ AICOCO
 ======
 
 입력 img_size = 28,28
-<span style="color:red">max_pooling 에서 ksize = [1,2,2,1] , padding = 'SAME'으로 줬기 때문에 반토막난다.</span>
+
+<span style="color: green"> max_pooling 에서 ksize = [1,2,2,1] , padding = 'SAME'으로 줬기 때문에 반토막 </span>
 
 con1 :  (?, 14, 14, 32)
 con2 :  (?, 7, 7, 64)
@@ -10,13 +11,15 @@ con3 :  (?, 4, 4, 128)
 con4 :  (?, 2, 2, 256)
 con5 :  (?, 1, 1, 128)
 
-flatten :  (?, 128)        1 x 1 x 128
-
-fc1 :  (?, 1024)           128을 입력으로 넣고 1024를 출력으로 지정해줬기 때문에 1024 결과
-fc2 :  (?, 10)             1024를 입력으로 넣고 class 개수인 10을 출력으로 지정
+#####1 x 1 x 128
+flatten :  (?, 128)
+#####128을 입력으로 넣고 1024를 출력으로 지정해줬기 때문에 1024 결과
+fc1 :  (?, 1024)   
+#####1024를 입력으로 넣고 class 개수인 10을 출력으로 지정
+fc2 :  (?, 10)             
  
 ![model](https://user-images.githubusercontent.com/48427281/89166949-bf176600-d5b5-11ea-8d84-4743b805b46d.JPG)
-구조가 잘 보이지는 않지만 사진은 점점 반토막나서 작아지고 필터 수는 늘어나면서 5개의 conv layer를 거친다.
+구조가 잘 보이지는 않지만 image는 점점 반토막나서 작아지고 필터 수는 늘어나면서 5개의 conv layer를 거친다.
 활성화함수로는 relu를 사용했고, cross_entroy_error로 loss를 구한 후, Adam으로 gradient를 최적화한다.
 batch_size는 50이고, keep_prob는 1로 설정하여 dropout은 안했다.
 
